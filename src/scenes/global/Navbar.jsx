@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Badge, Box, IconButton } from '@mui/material';
+import { Badge, Box, IconButton, Typography } from '@mui/material';
 import {
   PersonOutline,
   ShoppingBagOutlined,
@@ -8,12 +8,13 @@ import {
   SearchOutlined
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import { shades } from '../../theme';
-
+import { shades } from '../../theme'; 
+import { setOpenCart } from '../../state';
 const Navbar = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart)
 
   return (
     <Box
@@ -38,9 +39,10 @@ const Navbar = () => {
         <Box
           onClick={() => navigate("/")}
           sx={{ '&:hover' : { cursor: "pointer" }}}
-          color={shades.secondaryIndigo[900]}
+          color={shades.NeutralTurquoise[500]}
         >
-          Webshop
+          <Typography variant='h3' fontWeight="bold">WebShop</Typography>
+          
         </Box>
         <Box 
           display="flex"
@@ -56,9 +58,28 @@ const Navbar = () => {
             <PersonOutline />
           </IconButton>
 
-          <IconButton sx={{color : "black"}}>
-            <ShoppingBagOutlined />
-          </IconButton>
+          <Badge
+            badgeContent={cart.length}
+            color="secondary"
+            invisible={cart.length === 0}
+            sx={{
+              "& .MuiBadge-badge" : {
+                right: 5,
+                top: 5,
+                padding: "0 4px",
+                height: "14px",
+                minWidth: "13px"
+
+              }
+            }}
+          >
+            <IconButton
+            onClick={() => dispatch(setOpenCart({}))}
+              sx={{color : "black"}}
+            >
+              <ShoppingBagOutlined />
+            </IconButton>
+          </Badge>
 
           <IconButton sx={{color : "black"}}>
             <MenuOutlined />
