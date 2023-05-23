@@ -30,6 +30,7 @@ const CartMenu = () => {
     }, 0);
 
     return (
+        
         <Box //overlay
             display={isCartOpen ? "block" : "none"}
             backgroundColor="rgba(0,0,0,0.6)"
@@ -124,18 +125,25 @@ const CartMenu = () => {
                         </FlexBox>
                         <Button
                             sx={{
-                                backgroundColor: shades.primaryBlack[500],
+                                backgroundColor: shades.primaryBlack[900],
                                 color: "white",
                                 borderRadius: 0,
                                 minWidth: "100%",
                                 padding: "20px 40px",
                                 m: "20px 0",
+                                fontSize: "14px",
+                                transition: 'background-color 0.5s',
+                                '&:hover': {
+                                    backgroundColor: shades.secondaryIndigo[500],
+                                },
                             }}
                             onClick={() => {
                                 navigate("/Checkout");
                                 dispatch(setOpenCart({}));
                             }}
-                        >Checkout</Button>
+                        >
+                            Checkout
+                        </Button>
                     </Box>
 
                 </Box>

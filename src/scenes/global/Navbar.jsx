@@ -22,7 +22,7 @@ const Navbar = () => {
     alignItems= "center"
     width= "100%"
     height= "60px"
-    backgroundColor= "rgba(255,255,255,0.70)"
+    backgroundColor= "rgba(0,0,0,0.7)"
     color= "black"
     position= "fixed"
     top= "0"
@@ -39,9 +39,16 @@ const Navbar = () => {
         <Box
           onClick={() => navigate("/")}
           sx={{ '&:hover' : { cursor: "pointer" }}}
-          color={shades.NeutralTurquoise[500]}
+          color="white"
         >
-          <Typography variant='h3' fontWeight="bold">WebShop</Typography>
+          <Typography
+            fontSize="15px"
+            border={`1.5px solid white`}
+            padding="0.3rem 1rem"
+            fontWeight="bold"
+          >
+            WEBSHOP
+          </Typography>
           
         </Box>
         <Box 
@@ -50,11 +57,11 @@ const Navbar = () => {
           columnGap="20px"
           zIndex="2"
         >
-          <IconButton sx={{color : "black"}}>
+          <IconButton sx={{color : "white"}}>
             <SearchOutlined />
           </IconButton>
 
-          <IconButton sx={{color : "black"}}>
+          <IconButton sx={{color : "white"}}>
             <PersonOutline />
           </IconButton>
 
@@ -75,13 +82,13 @@ const Navbar = () => {
           >
             <IconButton
             onClick={() => dispatch(setOpenCart({}))}
-              sx={{color : "black"}}
+              sx={{color : "white"}}
             >
               <ShoppingBagOutlined />
             </IconButton>
           </Badge>
 
-          <IconButton sx={{color : "black"}}>
+          <IconButton sx={{color : "white"}}>
             <MenuOutlined />
           </IconButton>
         </Box>
